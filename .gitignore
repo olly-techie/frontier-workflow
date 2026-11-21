@@ -1,0 +1,7 @@
+node_modules/
+.env
+.env.*
+!.env.example
+*.skill
+.DS_Store
+NOTES.md

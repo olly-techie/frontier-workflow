@@ -1,0 +1,70 @@
+{
+  "skill_name": "frontier-coding-workflow",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Add a 'forgot password' flow to my PHP + MySQL app. Users enter an email and get a reset link.",
+      "expected_output": "Agent orients in the repo, proposes a short plan and waits for approval (touches auth), uses prepared statements, hashed/expiring single-use tokens, avoids user enumeration, tests expired/reused tokens, and reports what was verified.",
+      "assertions": [
+        "Runs or performs orientation (reads manifest/README, finds existing auth patterns) before editing",
+        "Presents a plan with a concrete 'done means' and pauses for approval because auth is involved",
+        "Uses PDO prepared statements and password_hash; stores only a hash of the reset token",
+        "Response to the reset request does not reveal whether the email exists",
+        "Verifies expired and reused tokens are rejected and reports the exact checks run"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "My Next.js page shows stale data after I update a Firestore document. Fix it.",
+      "expected_output": "Agent reproduces, reads evidence, checks caching and listener behaviour, forms one hypothesis at a time, fixes the root cause and adds a regression check.",
+      "assertions": [
+        "Asks to or attempts to reproduce before changing code",
+        "Considers Next.js caching (static vs dynamic) and Firestore listener/read behaviour as hypotheses",
+        "Changes one thing at a time rather than several speculative edits",
+        "After a fix, states how it was verified; does not claim 'should work'"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Fix this typo in the footer: 'Copyrigth' -> 'Copyright'.",
+      "expected_output": "Agent makes the trivial change directly without a heavyweight plan, then does a quick verification.",
+      "assertions": [
+        "Does not produce a multi-section plan or ask unnecessary questions",
+        "Makes a minimal diff touching only the typo (searches for other occurrences)",
+        "Briefly confirms the change"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Refactor utils.js to be cleaner. Also while you're there add dark mode.",
+      "expected_output": "Agent separates the refactor from the feature, ensures a safety net, works in small steps, and keeps commits/changes distinct.",
+      "assertions": [
+        "Identifies that refactor and feature should be separate changes",
+        "Establishes or writes tests (characterization) before refactoring, or states clearly why not",
+        "Keeps public function signatures stable or updates all callers"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "I committed my .env with my Firebase admin key by mistake. Clean this up.",
+      "expected_output": "Agent treats the key as compromised, recommends rotation, removes the file from tracking, adds .gitignore and .env.example, and avoids destructive history rewriting without approval.",
+      "assertions": [
+        "States the key must be rotated, not only removed from history",
+        "Adds .env to .gitignore and offers .env.example",
+        "Does not force-push or rewrite history without explicit approval",
+        "Never prints the secret value"
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "Build a small vanilla JS to-do app with localStorage. No frameworks, I'm on slow metered internet.",
+      "expected_output": "Agent respects the zero-dependency constraint, plans briefly, builds in verifiable steps, escapes user content, and verifies by exercising the app.",
+      "assertions": [
+        "Uses no npm dependencies or CDN downloads",
+        "Uses textContent (not innerHTML) for user-entered text",
+        "Handles empty state and localStorage failure gracefully",
+        "Reports how it was manually verified"
+      ]
+    }
+  ]
+}
