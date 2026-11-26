@@ -1,5 +1,5 @@
 ---
-name: frontier-coding-workflow
+name: frontier-workflow
 description: A disciplined end-to-end workflow for coding agents that mirrors how frontier models approach software tasks - orient in the repo, clarify, plan, implement in small verified steps, debug by root cause, verify with real commands, self-review the diff, and report honestly. Use this skill whenever the user asks to build a feature, fix a bug, refactor, add an endpoint or page, wire up Firebase, write tests, or change any code in a project, even for small changes. Especially relevant for vanilla JavaScript, PHP, Firebase, React and Next.js projects. Trigger on build, implement, fix, debug, refactor, add a feature, "why is this failing", "make this work", or any request that will modify code.
 license: MIT
 metadata:

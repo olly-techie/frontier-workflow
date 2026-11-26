@@ -12,9 +12,9 @@ jobs:
       - name: Check SKILL.md frontmatter and size
         run: |
           set -e
-          f=skills/frontier-coding-workflow/SKILL.md
+          f=skills/frontier-workflow/SKILL.md
           head -1 "$f" | grep -q '^---$'
-          grep -q '^name: frontier-coding-workflow$' "$f"
+          grep -q '^name: frontier-workflow$' "$f"
           grep -q '^description: ' "$f"
           lines=$(wc -l < "$f")
           [ "$lines" -lt 500 ] || { echo "SKILL.md too long: $lines lines"; exit 1; }
@@ -24,7 +24,7 @@ jobs:
       - name: Referenced files exist
         run: |
           set -e
-          cd skills/frontier-coding-workflow
+          cd skills/frontier-workflow
           for p in $(grep -oE '(references|scripts|assets)/[A-Za-z0-9._-]+' SKILL.md | sort -u); do
             [ -e "$p" ] || { echo "missing: $p"; exit 1; }
           done
@@ -32,7 +32,7 @@ jobs:
       - name: ShellCheck
         run: |
           sudo apt-get update -qq && sudo apt-get install -y -qq shellcheck
-          shellcheck -S warning skills/frontier-coding-workflow/scripts/*.sh install.sh
+          shellcheck -S warning skills/frontier-workflow/scripts/*.sh install.sh
 
       - name: Script smoke test
         run: |
@@ -41,7 +41,7 @@ jobs:
           git config user.email ci@example.com; git config user.name ci
           echo '{"name":"fx","scripts":{"test":"echo ok"}}' > package.json
           mkdir node_modules; git add -A; git commit -qm init
-          S="$GITHUB_WORKSPACE/skills/frontier-coding-workflow/scripts"
+          S="$GITHUB_WORKSPACE/skills/frontier-workflow/scripts"
           bash "$S/orient.sh" >/dev/null
           bash "$S/verify.sh" --no-build
           bash "$S/secrets_scan.sh"

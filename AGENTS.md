@@ -1,4 +1,4 @@
-## Coding workflow (frontier-coding-workflow, condensed)
+## Coding workflow (frontier-workflow, condensed)
 
 Follow this loop for any task that modifies code: **Orient -> Clarify -> Plan -> Small verified steps -> Prove it works -> Report honestly.**
 

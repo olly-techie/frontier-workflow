@@ -1,4 +1,4 @@
-# frontier-coding-workflow
+# frontier-workflow
 
 An [Agent Skill](https://opencode.ai/docs/skills/) that gives coding agents the working habits strong frontier models use on real software tasks: **orient, clarify, plan, build in small verified steps, debug by root cause, verify with real commands, review the diff, and report honestly.**
 
@@ -9,7 +9,7 @@ It works with any agent that supports `SKILL.md` skills (opencode, Claude Code, 
 ## What's inside
 
 ```
-skills/frontier-coding-workflow/
+skills/frontier-workflow/
   SKILL.md                     # the workflow (loaded when a coding task is detected)
   scripts/
     orient.sh                  # repo + stack + scripts overview in one shot
@@ -49,7 +49,7 @@ Other targets:
 
 opencode discovers skills in `.opencode/skills`, `~/.config/opencode/skills`, and the Claude- and agent-compatible `.claude/skills` and `.agents/skills` locations, so one install is usually enough. Restart the agent afterwards.
 
-Manual install: copy `skills/frontier-coding-workflow/` into any of the directories above. The folder name must match the `name` in `SKILL.md`.
+Manual install: copy `skills/frontier-workflow/` into any of the directories above. The folder name must match the `name` in `SKILL.md`.
 
 ## How it works
 
@@ -68,9 +68,9 @@ Key behaviours it enforces:
 ## Using the scripts directly
 
 ```bash
-bash skills/frontier-coding-workflow/scripts/orient.sh
-bash skills/frontier-coding-workflow/scripts/verify.sh --no-build
-bash skills/frontier-coding-workflow/scripts/secrets_scan.sh
+bash skills/frontier-workflow/scripts/orient.sh
+bash skills/frontier-workflow/scripts/verify.sh --no-build
+bash skills/frontier-workflow/scripts/secrets_scan.sh
 ```
 
 `verify.sh` exits non-zero if any executed check fails. `secrets_scan.sh` exits 1 on suspicious findings; it is a quick heuristic, not a replacement for a dedicated scanner.

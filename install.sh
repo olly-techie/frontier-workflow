@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Install the frontier-coding-workflow skill.
+# Install the frontier-workflow skill.
 #
 # Usage:
 #   ./install.sh                 # install to ~/.claude/skills (read by Claude Code AND opencode)
@@ -12,7 +12,7 @@
 # Flags can be combined, e.g. ./install.sh --claude --opencode
 set -eu
 
-NAME="frontier-coding-workflow"
+NAME="frontier-workflow"
 HERE="$(cd "$(dirname "$0")" && pwd)"
 SRC="$HERE/skills/$NAME"
 [ -d "$SRC" ] || { echo "skill source not found: $SRC" >&2; exit 1; }
@@ -61,7 +61,7 @@ done
 
 if [ -n "$agents_md_dir" ]; then
   f="$agents_md_dir/AGENTS.md"
-  marker="<!-- frontier-coding-workflow -->"
+  marker="<!-- frontier-workflow -->"
   if [ "$uninstall" -eq 1 ]; then
     echo "to uninstall AGENTS.md content, remove the section starting at '$marker' in $f"
   elif [ -f "$f" ] && grep -qF "$marker" "$f"; then
